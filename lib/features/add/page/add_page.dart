@@ -1,4 +1,4 @@
-import 'package:cantwait28/features/add/cubit/add_cubit.dart';
+import 'package:cantwait28/features/add/cubit/details_cubit.dart';
 import 'package:cantwait28/repositories/items_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,8 +20,8 @@ class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddCubit(ItemsRepository()),
-      child: BlocListener<AddCubit, AddState>(
+      create: (context) => DetailsCubit(ItemsRepository()),
+      child: BlocListener<DetailsCubit, DetailsState>(
         listener: (context, state) {
           if (state.saved) {
             Navigator.of(context).pop();
@@ -35,7 +35,7 @@ class _AddPageState extends State<AddPage> {
             );
           }
         },
-        child: BlocBuilder<AddCubit, AddState>(
+        child: BlocBuilder<DetailsCubit, DetailsState>(
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
@@ -47,7 +47,7 @@ class _AddPageState extends State<AddPage> {
                             _releaseDate == null
                         ? null
                         : () {
-                            context.read<AddCubit>().add(
+                            context.read<DetailsCubit>().add(
                                   _title!,
                                   _imageURL!,
                                   _releaseDate!,

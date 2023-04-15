@@ -11,6 +11,7 @@ class DetailsPage extends StatelessWidget {
   }) : super(key: key);
 
   final String id;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,11 @@ class DetailsPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 vertical: 20,
               ),
-              children: const [],
+              children: [
+                _ListViewItem(
+                  itemModel: itemModel,
+                ),
+              ],
             );
           },
         ),
@@ -38,7 +43,6 @@ class DetailsPage extends StatelessWidget {
   }
 }
 
-// ignore: unused_element
 class _ListViewItem extends StatelessWidget {
   const _ListViewItem({
     Key? key,
